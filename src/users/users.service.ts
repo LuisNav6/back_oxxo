@@ -29,7 +29,11 @@ export class UserService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<IUser> {
-    const updatedUser = await this.UserModel.findByIdAndUpdate(id, updateUserDto, { new: true }).exec();
+    const updatedUser = await this.UserModel.findByIdAndUpdate(
+      id,
+      updateUserDto,
+      { new: true },
+    ).exec();
     if (!updatedUser) {
       throw new NotFoundException('Usuario no encontrado');
     }
@@ -50,5 +54,4 @@ export class UserService {
     }
     return user;
   }
-
 }

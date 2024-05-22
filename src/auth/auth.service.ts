@@ -2,12 +2,9 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../users/users.service';
 import { IUser } from '../interfaces/user';
 
-
 @Injectable()
 export class AuthService {
-  constructor(
-    private readonly userService: UserService,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   async validateUser(email: string, password: string): Promise<IUser> {
     const user = await this.userService.findByEmail(email);
@@ -16,5 +13,4 @@ export class AuthService {
     }
     return user;
   }
-
 }
