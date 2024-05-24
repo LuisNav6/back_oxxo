@@ -25,11 +25,25 @@ export class InventoryController {
 
     @Put(':id')
     async update(@Param('id') id: string, @Body() updateInventoryDto: UpdateInventoryDto): Promise<IInventory> {
-        return this.InventoryService.update(id, updateInventoryDto);
+        try{
+            return this.InventoryService.update(id, updateInventoryDto);
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+            throw new NotFoundException(error.message);
+            }
+            throw error;
+        }
     }
 
     @Delete(':id')
     async delete(@Param('id') id: string): Promise<IInventory> {
-        return this.InventoryService.delete(id);
+        try{
+            return this.InventoryService.delete(id);
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+            throw new NotFoundException(error.message);
+            }
+            throw error;
+        }
     }
 }
