@@ -1,11 +1,10 @@
-// interfaces/branch-office.ts
 import { Document, Types } from 'mongoose';
 
 export interface IBranchOffice extends Document {
-  name: string;
-  dirección: string;
-  CP: string;
-  RFC: string;
-  tel: string;
-  admin: Types.ObjectId;
+  readonly name: string;
+  readonly location: string;
+  readonly CP: string;
+  readonly RFC: string;
+  readonly tel: string;
+  readonly admin: Types.ObjectId;
 }

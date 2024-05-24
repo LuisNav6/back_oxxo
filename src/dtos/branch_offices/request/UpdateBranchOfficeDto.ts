@@ -1,10 +1,27 @@
-// dto/update-branch-office.dto.ts
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 export class UpdateBranchOfficeDto {
-    readonly name?: string;
-    readonly dirección?: string;
-    readonly CP?: string;
-    readonly RFC?: string;
-    readonly tel?: string;
-    readonly admin?: string;
+  @IsNotEmpty()
+  @IsString()
+  readonly name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly location: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly CP: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly RFC: string;
+  
+  @IsNotEmpty()
+  @IsString()
+  readonly tel: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly admin: string;
   }
   
