@@ -24,4 +24,8 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   readonly rol: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly branch_id: string;
 }

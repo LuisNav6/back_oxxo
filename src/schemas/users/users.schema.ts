@@ -6,5 +6,6 @@ export const UserSchema = new mongoose.Schema({
   email: { type: String, required: true },
   tel: { type: String, required: true },
   password: { type: String, required: true },
-  rol: { type: String, required: true }
+  rol: { type: String, required: true },
+  branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Branch_Office', required: true }
 });

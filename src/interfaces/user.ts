@@ -7,5 +7,6 @@ export interface IUser extends Document{
     readonly tel: string;
     readonly password: string;
     readonly rol: string;
+    readonly branch_id: mongoose.Types.ObjectId;
   }
   

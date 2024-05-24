@@ -19,5 +19,9 @@ export class CreateBranchOfficeDto {
   @IsNotEmpty()
   @IsString()
   readonly tel: string;
+  
+  @IsNotEmpty()
+  @IsString()
+  readonly admin: string;
   }
   

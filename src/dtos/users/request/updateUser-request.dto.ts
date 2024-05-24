@@ -20,4 +20,8 @@ export class UpdateUserDto {
   @IsNotEmpty()
   @IsString()
   readonly rol: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly branch_id: string;
 }
