@@ -1,24 +1,24 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-
-import { Product } from './schema/product.schemas';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
+import { CreateProductDto } from 'src/dtos/product/request/createProducto-request.dto';
+import { IProduct } from 'src/interfaces/product';
 
 @Injectable()
 export class ProductService {
   constructor(
-    @InjectModel(Product.name) private productModel: Model<Product>,
+    @Inject('PRODUCT_MODEL')
+    private productModel: Model<IProduct>,
   ) {}
 
-  async create(product: Product) {
-    const createdProduct = new this.productModel(product);
+  async create(createProductDto: CreateProductDto): Promise<IProduct> {
+    const createdProduct = new this.productModel(createProductDto);
     return createdProduct.save();
   }
-  async findAll(): Promise<Product[]> {
+  async findAll(): Promise<IProduct[]> {
     return this.productModel.find().exec();
   }
 
-  async findById(id: string): Promise<Product> {
+  async findById(id: string): Promise<IProduct> {
     const user = await this.productModel.findById(id).exec();
     if (!user) {
       throw new NotFoundException('Usuario no encontrado');

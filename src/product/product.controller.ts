@@ -8,24 +8,24 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { Product } from './schema/product.schemas';
-
+import { IProduct } from 'src/interfaces/product';
+import { CreateProductDto } from 'src/dtos/product/request/createProducto-request.dto';
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Post()
-  async create(@Body() product: Product) {
-    return this.productService.create(product);
+  @Post('create-product')
+  async create(@Body() createProductDto: CreateProductDto): Promise<IProduct> {
+    return this.productService.create(createProductDto);
   }
 
   @Get()
-  async findAll(): Promise<Product[]> {
+  async findAll(): Promise<IProduct[]> {
     return this.productService.findAll();
   }
 
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<Product> {
+  async findById(@Param('id') id: string): Promise<IProduct> {
     return this.productService.findById(id);
   }
 
