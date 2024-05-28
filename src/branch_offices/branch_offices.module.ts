@@ -12,6 +12,5 @@ import { DatabaseModule } from '../bd/database.module';
     BranchOfficesService,
     ...BranchOfficesProviders,
   ],
-  exports: [BranchOfficesService],
 })
 export class BranchOfficesModule {}
