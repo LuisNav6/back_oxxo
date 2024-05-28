@@ -4,6 +4,7 @@ import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module'; // Asegúrate de importar el módulo de usuarios
 import { JwtModule } from '@nestjs/jwt/dist/jwt.module';
 import { jwtConstants } from './constants/jwt.constants';
+import { AuthGuard } from './guard/auth.guard';
 
 @Module({
   imports: [UsersModule, 
@@ -12,7 +13,7 @@ import { jwtConstants } from './constants/jwt.constants';
     secret: jwtConstants.secret,
     signOptions: { expiresIn: '1d' },
   }),], // Importa el módulo de usuarios aquí
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   controllers: [AuthController],
 })
 export class AuthModule {}
