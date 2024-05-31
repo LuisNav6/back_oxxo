@@ -7,5 +7,5 @@ export interface IInventory extends Document {
 
 interface IInventoryItem {
     readonly product_id: mongoose.Types.ObjectId,
-    readonly quantity: number
+    quantity: number
 }

@@ -32,4 +32,22 @@ export class InventoryService {
         return this.InventoryModel.findByIdAndDelete(id).exec();
     }
 
+    async updateInventoryAfterSale(branchOfficeId: string, productId: string, quantity: number, session: any): Promise<void> {
+        const inventory = await this.InventoryModel.findOne({ branch_office_id: branchOfficeId }).session(session).exec();
+        if (!inventory) {
+            throw new NotFoundException('Inventory not found');
+        }
+
+        const inventoryItem = inventory.inventory.find(item => item.product_id.equals(productId));
+        if (!inventoryItem) {
+            throw new NotFoundException('Product not found in inventory');
+        }
+
+        if (inventoryItem.quantity < quantity) {
+            throw new Error('Insufficient inventory quantity');
+        }
+
+        inventoryItem.quantity -= quantity;
+        await inventory.save({ session });
+    }
 }
