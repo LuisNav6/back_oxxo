@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from 'src/dtos/products/request/createProduct.dto';
 import { updateProductDto } from 'src/dtos/products/request/updateProduct.dto';
-
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('products')
 export class ProductsController {
@@ -19,13 +19,15 @@ export class ProductsController {
   }
 
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.ProductsService.create(createProductDto);
+  @UseInterceptors(FileInterceptor('photo'))
+  create(@Body() createProductDto: CreateProductDto, @UploadedFile() file: Express.MulterFile) {
+    return this.ProductsService.create(createProductDto, file);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: updateProductDto) {
-    return this.ProductsService.update(id, updateProductDto);
+  @UseInterceptors(FileInterceptor('photo'))
+  update(@Param('id') id: string, @Body() updateProductDto: updateProductDto, @UploadedFile() file: Express.MulterFile) {
+    return this.ProductsService.update(id, updateProductDto, file);
   }
 
   @Delete(':id')

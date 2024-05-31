@@ -3,6 +3,7 @@ import { Model } from 'mongoose';
 import { CreateProductDto } from 'src/dtos/products/request/createProduct.dto';
 import { updateProductDto } from 'src/dtos/products/request/updateProduct.dto';
 import { Product } from 'src/interfaces/product';
+import { GoogleDriveService } from '../google/google-drive.service';
 
 
 
@@ -11,10 +12,12 @@ export class ProductsService {
   constructor(
     @Inject('PRODUCT_MODEL')
     private productModel: Model<Product>,
+     private googleDriveService: GoogleDriveService,
   ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
-    const createdProduct = new this.productModel(createProductDto);
+  async create(createProductDto: CreateProductDto, file: Express.MulterFile): Promise<Product> {
+    const photoUrl = await this.googleDriveService.uploadFile(file);
+    const createdProduct = new this.productModel({ ...createProductDto, photo: photoUrl });
     return createdProduct.save();
   }
 
@@ -30,12 +33,19 @@ export class ProductsService {
     return product;
   }
 
-  async update(id: string, updateProductDto: updateProductDto): Promise<Product> {
-    const updatedProduct = await this.productModel.findByIdAndUpdate(id, updateProductDto, { new: true }).exec();
-    if (!updatedProduct) {
-      throw new NotFoundException('Producto no encontrada');
+  async update(id: string, updateProductDto: updateProductDto, file: Express.MulterFile): Promise<Product> {
+    const product = await this.productModel.findById(id).exec();
+    if (!product) {
+      throw new NotFoundException('Producto no encontrado');
     }
-    return updatedProduct;
+
+    if (file) {
+      const photoUrl = await this.googleDriveService.uploadFile(file);
+      updateProductDto.photo = photoUrl;
+    }
+
+    Object.assign(product, updateProductDto);
+    return product.save();
   }
 
   async delete(id: string): Promise<void> {

@@ -14,6 +14,6 @@ export class updateProductDto {
 
   @IsNotEmpty()
   @IsString()
-  readonly photo: string;
+  photo: string;
   }
   

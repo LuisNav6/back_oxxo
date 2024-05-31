@@ -11,9 +11,5 @@ export class CreateProductDto {
   @IsNotEmpty()
   @IsString()
   readonly description: string;
-
-  @IsNotEmpty()
-  @IsString()
-  readonly photo: string;
   }
   
