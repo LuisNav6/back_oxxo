@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException,  Query } from '@nestjs/common';
 import { CreateInventoryDto } from '../dtos/inventory/request/createInventory-request.dto';
 import { UpdateInventoryDto } from '../dtos/inventory/request/updateInventory-request.dto';
 import { InventoryService } from './inventory.service';
@@ -16,6 +16,16 @@ export class InventoryController {
     @Get(':id')
     async findOne(@Param('id') id: string): Promise<IInventory> {
         return this.InventoryService.findOne(id);
+    }
+
+    @Get('branches/:branchId')
+    async findAllByBranchId(@Param('branchId') branchId: string): Promise<IInventory[]> {
+        return this.InventoryService.findAllByBranchId(branchId);
+    }
+
+    @Get('branch/:branchId')
+    async findByBranchId(@Param('branchId') branchId: string): Promise<IInventory> {
+        return this.InventoryService.findByBranchId(branchId);
     }
 
     @Post()

@@ -6,5 +6,4 @@ export interface IBranchOffice extends Document {
   readonly CP: string;
   readonly RFC: string;
   readonly tel: string;
-  readonly admin: Types.ObjectId;
 }

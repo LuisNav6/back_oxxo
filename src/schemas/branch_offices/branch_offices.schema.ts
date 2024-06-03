@@ -5,6 +5,5 @@ export const BranchOfficeSchema = new mongoose.Schema({
   location: { type: String, required: true },
   CP: { type: String, required: true },
   RFC: { type: String, required: true },
-  tel: { type: String, required: true },
-  admin: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true }
+  tel: { type: String, required: true }
 });

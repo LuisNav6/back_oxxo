@@ -9,6 +9,6 @@ export class UpdateInventoryDto {
 
   @IsNotEmpty()
   @IsArray()
-  readonly inventory_id: InventoryArrayDto;
+  readonly inventory: InventoryArrayDto[];
  
 }

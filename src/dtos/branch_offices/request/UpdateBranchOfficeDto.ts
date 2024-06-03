@@ -19,9 +19,5 @@ export class UpdateBranchOfficeDto {
   @IsNotEmpty()
   @IsString()
   readonly tel: string;
-
-  @IsNotEmpty()
-  @IsString()
-  readonly admin: string;
   }
   

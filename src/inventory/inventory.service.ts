@@ -18,6 +18,22 @@ export class InventoryService {
     async findOne(id: string): Promise<IInventory> {
         return this.InventoryModel.findById(id).exec();
     }
+    async findAllByBranchId(branchId: string): Promise<IInventory[]> {
+        const inventories = await this.InventoryModel.find({ branch_office_id: branchId }).exec();
+        if (!inventories || inventories.length === 0) {
+            throw new NotFoundException(`No inventories found for branch office ID ${branchId}`);
+        }
+        return inventories;
+    }
+
+    async findByBranchId(branchId: string): Promise<IInventory> {
+        const inventory = await this.InventoryModel.findOne({ branch_office_id: branchId }).exec();
+        if (!inventory) {
+            throw new NotFoundException(`No inventories found for branch office ID ${branchId}`);
+        }
+        return inventory;
+    }
+    
 
     async create(createInventoryDto: CreateInventoryDto): Promise<IInventory> {
         const newInventory = new this.InventoryModel(createInventoryDto);
