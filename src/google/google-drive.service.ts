@@ -24,15 +24,15 @@ export class GoogleDriveService {
     const response = await this.driveClient.files.create({
       requestBody: {
         name: originalname,
-        parents: ['13y_RXzzmwXUhyTF9xRrVMXm54HiQ7Rxp'],
+        parents: ['1lP7DjHgy4SYbSY_D1Gic3Aj0isGWYHyz'],
       },
       media: {
         mimeType: file.mimetype,
         body: stream,
       },
     });
-    //https://drive.google.com/drive/folders/13y_RXzzmwXUhyTF9xRrVMXm54HiQ7Rxp?usp=sharing
 
+    //https://drive.google.com/drive/folders/1lP7DjHgy4SYbSY_D1Gic3Aj0isGWYHyz?usp=sharing
     const fileId = response.data.id;
 
     await this.driveClient.permissions.create({
@@ -43,6 +43,6 @@ export class GoogleDriveService {
       },
     });
 
-    return `https://drive.google.com/uc?id=${fileId}`;
+    return `https://drive.google.com/thumbnail?id=${fileId}`;
   }
 }
