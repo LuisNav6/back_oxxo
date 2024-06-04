@@ -1,11 +1,14 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException,  Query } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException,  Query, UseGuards} from '@nestjs/common';
 import { CreateInventoryDto } from '../dtos/inventory/request/createInventory-request.dto';
 import { UpdateInventoryDto } from '../dtos/inventory/request/updateInventory-request.dto';
 import { InventoryService } from './inventory.service';
 import { IInventory } from '../interfaces/inventory'
-
+import { AuthGuard } from 'src/auth/guard/auth.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { Role } from 'src/auth/role.enum';
 
 @Controller('inventory')
+@UseGuards(AuthGuard)
 export class InventoryController {
     constructor(private readonly InventoryService: InventoryService) {  }
 
@@ -29,11 +32,13 @@ export class InventoryController {
     }
 
     @Post()
+    @Roles(Role.ADMIN)
     async create(@Body() createInventoryDto: CreateInventoryDto): Promise<IInventory> {
         return this.InventoryService.create(createInventoryDto);
     }
 
     @Put(':id')
+    @Roles(Role.ADMIN)
     async update(@Param('id') id: string, @Body() updateInventoryDto: UpdateInventoryDto): Promise<IInventory> {
         try{
             return this.InventoryService.update(id, updateInventoryDto);
