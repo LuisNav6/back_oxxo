@@ -1,13 +1,13 @@
 {
   "type": "service_account",
-  "project_id": "sodium-pathway-407205",
-  "private_key_id": "58fe60e266d9b4a0108fcd13a0e5e17fb68d74dd",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDiaNTYvgCghdQ/\nvVLWQpNwAr8ETbjqyYGLCOJKLCZjZMeLOtHPG/R+ezbWqKQKIgp1qcnZigpDaUVF\nMCzWko+wFDwzAKTP5GpUfSWGed33Y9WWMofjx9StJFkJaiJyLUckC1wYKPAhEM3F\nzD8Ym+8Id0NQONLP7tVte4IXe0zMUZXrTePKFEPVsyDWZnGOjEwBRGiNT6Mbamzw\nOw5QsfnK8R9g1+z8CzD0j3iY8OdvRHHQdJLPioAHs6FmLge9d9TD+Of7fZnvgNhP\njb//rr9R4Ryjbchkdv/rnPlDD5pW80+kavoYiOqDlEg/oAN57NiH9E18h3NX9MRu\n7xLEZrkRAgMBAAECggEAMDps9pN4rjj7xq0VT3NElVRcbLYCqS7N47g7fdnMPplp\n4ShhJ3k4ulWUT6MCOG9aY4iMqQR83bG3sf6KWpXDOlqBHUsqkGdDWCaFXxEoHWnc\nhj9Sz4xSayRmO/lqB4DKGe06i6HyztRVxOfWW+9hel/vTJAiJe1l9Mmdo1NeP1pO\nDX4E/9zdAyNSlAhd25/Plbni02deyu/h62xHvDLxSIDLo2o+FjZFuTTad98ndn0B\nL80LqrsElxWzy02nUqit4nJZS+r7SQCke2WMX1yg95/v9COxgMh5dhKrayLPMnKq\nPSW4C5t8KxoH3BGBZIOPo7X/3jZ0pKogJo+T//m43QKBgQD5+M609ToONaTwsrz0\np0ebYiDCBxERs4ke2UGP6Ak4nkbkGgZjtrBeiPMybAA+8xillEIeZlx5M3ip1Ijg\nDj4VcdEie4x4aOD/2Nds5XIDikJk4tWx57fU8nAU0b2DndBTshMgLhFMc2FutjBt\nH22bu9Zl+L/UlF+nXQy7TmAxJQKBgQDn3o/z9voXjR2S9a0vWmPKoz9ZR8TBdEz8\ns3mGd/om2D7ceu6cWP4Wx4b0CCuq5f+/StAIKGqhufOW5+JT2ZFF1LBGAYxaGlF2\nBEGi6iyEUljYReEqdk+DiOeMVnhP9bj+MkwFE7jc34f174ixRLeYiUg/2mbJG7ot\ndwpSTEeyfQKBgQCL910Gxijzu+XXQL28382gm5lsCzjriHPG6i9jvLEtGrLnFgtt\n2eV3iYdjPEYG+Wdbj2BWVUqCMuflcDQUAOWSbGCFxlgpM9CIcYpuVys4ADqc8sZl\nDzJH8lf/0FElWUBFHPjIlALro89yhmEnOOnOwaaTAm2nQk0tEVUHrCMAYQKBgC1X\nyK7czWttnSrwAD4SXxFxeyHqdv+dzrBcKJezPqf6AdD7+U152bZ6rllqf5+b+rdd\n2fC+dpvJ0WjhT9E16sLNJOuLwfaczvFVQ8CoKqx1rgodIDs9h68hRqabAkwgsVyE\nWXlksfH/hIcDoKeJ2J1ru0VBYHhTg8UAUnRlll/BAoGBAMnQ+8Wp4tqRb9v4WkTf\nP2i3VLnImhwzXdDNDBv7c24V+RSl0I+ziHIFiuI53VYEh6nBBusfN+olTynSf6l+\n3GOLS1oGlp8iU83Oak+Rgpz/f/Yhm3qFPct9gLzhQoo/fKEA1L5yedzjSbI4uqmc\nVTHBvesVpwErBfWdOAmqV7g+\n-----END PRIVATE KEY-----\n",
-  "client_email": "testing@sodium-pathway-407205.iam.gserviceaccount.com",
-  "client_id": "101501264506517878232",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/testing%40sodium-pathway-407205.iam.gserviceaccount.com",
+  "project_id": "project",
+  "private_key_id": "key",
+  "private_key": "-----BEGIN PRIVATE KEY-----\x\n-----END PRIVATE KEY-----\n",
+  "client_email": "email",
+  "client_id": "id",
+  "auth_uri": "uri",
+  "token_uri": "token",
+  "auth_provider_x509_cert_url": "certs",
+  "client_x509_cert_url": "cert_url",
   "universe_domain": "googleapis.com"
 }
