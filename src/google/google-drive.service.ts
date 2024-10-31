@@ -10,7 +10,7 @@ export class GoogleDriveService {
 
   constructor() {
     const auth = new google.auth.GoogleAuth({
-      keyFile: path.join(__dirname, '../../testbigtable-422005-1228d0c872a1.json'),
+      keyFile: path.join(__dirname, 'path/from/your/kefile.json'),
       scopes: ['https://www.googleapis.com/auth/drive'],
     });
 
@@ -24,7 +24,7 @@ export class GoogleDriveService {
     const response = await this.driveClient.files.create({
       requestBody: {
         name: originalname,
-        parents: ['1lP7DjHgy4SYbSY_D1Gic3Aj0isGWYHyz'],
+        parents: [''],
       },
       media: {
         mimeType: file.mimetype,
@@ -32,7 +32,6 @@ export class GoogleDriveService {
       },
     });
 
-    //https://drive.google.com/drive/folders/1lP7DjHgy4SYbSY_D1Gic3Aj0isGWYHyz?usp=sharing
     const fileId = response.data.id;
 
     await this.driveClient.permissions.create({
